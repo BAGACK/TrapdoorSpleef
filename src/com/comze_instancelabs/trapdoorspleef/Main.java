@@ -143,7 +143,7 @@ public class Main extends JavaPlugin implements Listener {
 										// b.setData(data);
 										// b.getWorld().playEffect(b.getLocation(), Effect.DOOR_TOGGLE, 0);
 									} catch (Exception e) {
-										System.out.println("fail");
+										//System.out.println("fail");
 									}
 								}
 							}
