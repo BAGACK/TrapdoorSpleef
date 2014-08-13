@@ -14,6 +14,8 @@ public class IArena extends Arena {
 	Main m = null;
 	int c = 30;
 
+	MassBlockUpdate mbu;
+
 	public IArena(Main m, String arena) {
 		super(m, arena);
 		this.m = m;
@@ -24,9 +26,7 @@ public class IArena extends Arena {
 	}
 
 	public void generateArena(Location start) {
-		final MassBlockUpdate mbu = CraftMassBlockUpdate.createMassBlockUpdater(m, start.getWorld());
-
-		mbu.setRelightingStrategy(MassBlockUpdate.RelightingStrategy.NEVER);
+		mbu = checkmbu(start);
 
 		int x = start.getBlockX();
 		int y = start.getBlockY();
@@ -44,6 +44,7 @@ public class IArena extends Arena {
 				}
 			}
 		}
+		mbu.notifyClients();
 	}
 
 	@Override
@@ -56,6 +57,14 @@ public class IArena extends Arena {
 				a.generateArena(a.getSpawns().get(0).clone().add(0D, -1D, 0D));
 			}
 		}, 10L);
+	}
+
+	public MassBlockUpdate checkmbu(Location start) {
+		if (mbu == null) {
+			mbu = CraftMassBlockUpdate.createMassBlockUpdater(m, start.getWorld());
+			mbu.setRelightingStrategy(MassBlockUpdate.RelightingStrategy.NEVER);
+		}
+		return mbu;
 	}
 
 }

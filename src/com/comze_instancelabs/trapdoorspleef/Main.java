@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Effect;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -13,12 +17,13 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
+import org.bukkit.material.TrapDoor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.comze_instancelabs.minigamesapi.Arena;
 import com.comze_instancelabs.minigamesapi.ArenaSetup;
-import com.comze_instancelabs.minigamesapi.ArenaState;
 import com.comze_instancelabs.minigamesapi.MinigamesAPI;
 import com.comze_instancelabs.minigamesapi.PluginInstance;
 import com.comze_instancelabs.minigamesapi.commands.CommandHandler;
@@ -28,6 +33,8 @@ import com.comze_instancelabs.minigamesapi.config.MessagesConfig;
 import com.comze_instancelabs.minigamesapi.config.StatsConfig;
 import com.comze_instancelabs.minigamesapi.util.Util;
 import com.comze_instancelabs.minigamesapi.util.Validator;
+import com.comze_instancelabs.trapdoorspleef.nms.CraftMassBlockUpdate;
+import com.comze_instancelabs.trapdoorspleef.nms.MassBlockUpdate;
 
 public class Main extends JavaPlugin implements Listener {
 
@@ -111,6 +118,41 @@ public class Main extends JavaPlugin implements Listener {
 		final Player p = event.getPlayer();
 		if (pli.global_players.containsKey(p.getName())) {
 			event.setCancelled(true);
+		}
+	}
+
+	@EventHandler
+	public void onInteract(PlayerInteractEvent event) {
+		final Player p = event.getPlayer();
+		if (pli.global_players.containsKey(p.getName())) {
+			IArena a = (IArena) pli.global_players.get(p.getName());
+			if (event.hasBlock()) {
+				if (event.getClickedBlock().getType() == Material.TRAP_DOOR) {
+					final MassBlockUpdate mbu = CraftMassBlockUpdate.createMassBlockUpdater(m, event.getClickedBlock().getWorld());
+					mbu.setRelightingStrategy(MassBlockUpdate.RelightingStrategy.NEVER);
+					Location origin = event.getClickedBlock().getLocation();
+					for (int i = -1; i < 2; i++) {
+						for (int j = -1; j < 2; j++) {
+							Block b = origin.clone().add(i, 0D, j).getBlock();
+							if (b.getType() == Material.TRAP_DOOR) {
+								TrapDoor td = (TrapDoor) b.getType().getNewData(b.getData());
+								if (td.isOpen() != true) {
+									byte data = (byte) (td.getData() ^ 4);
+									try {
+										mbu.setBlock(origin.getBlockX() + i, origin.getBlockY(), origin.getBlockZ() + j, 96, data);
+										// b.setData(data);
+										// b.getWorld().playEffect(b.getLocation(), Effect.DOOR_TOGGLE, 0);
+									} catch (Exception e) {
+										System.out.println("fail");
+									}
+								}
+							}
+						}
+					}
+					mbu.notifyClients();
+					event.setCancelled(true);
+				}
+			}
 		}
 	}
 }
