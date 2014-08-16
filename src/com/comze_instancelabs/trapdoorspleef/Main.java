@@ -24,6 +24,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.comze_instancelabs.minigamesapi.Arena;
 import com.comze_instancelabs.minigamesapi.ArenaSetup;
+import com.comze_instancelabs.minigamesapi.ArenaState;
 import com.comze_instancelabs.minigamesapi.MinigamesAPI;
 import com.comze_instancelabs.minigamesapi.PluginInstance;
 import com.comze_instancelabs.minigamesapi.commands.CommandHandler;
@@ -126,6 +127,10 @@ public class Main extends JavaPlugin implements Listener {
 		final Player p = event.getPlayer();
 		if (pli.global_players.containsKey(p.getName())) {
 			IArena a = (IArena) pli.global_players.get(p.getName());
+			if (a.getArenaState() != ArenaState.INGAME) {
+				event.setCancelled(true);
+				return;
+			}
 			if (event.hasBlock()) {
 				if (event.getClickedBlock().getType() == Material.TRAP_DOOR) {
 					final MassBlockUpdate mbu = CraftMassBlockUpdate.createMassBlockUpdater(m, event.getClickedBlock().getWorld());
@@ -143,7 +148,7 @@ public class Main extends JavaPlugin implements Listener {
 										// b.setData(data);
 										// b.getWorld().playEffect(b.getLocation(), Effect.DOOR_TOGGLE, 0);
 									} catch (Exception e) {
-										//System.out.println("fail");
+										// System.out.println("fail");
 									}
 								}
 							}
