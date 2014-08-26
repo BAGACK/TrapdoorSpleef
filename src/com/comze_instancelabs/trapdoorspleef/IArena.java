@@ -2,10 +2,11 @@ package com.comze_instancelabs.trapdoorspleef;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.block.Block;
+import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffectType;
 
 import com.comze_instancelabs.minigamesapi.Arena;
+import com.comze_instancelabs.minigamesapi.util.Validator;
 import com.comze_instancelabs.trapdoorspleef.nms.CraftMassBlockUpdate;
 import com.comze_instancelabs.trapdoorspleef.nms.MassBlockUpdate;
 
@@ -65,6 +66,24 @@ public class IArena extends Arena {
 			mbu.setRelightingStrategy(MassBlockUpdate.RelightingStrategy.NEVER);
 		}
 		return mbu;
+	}
+
+	@Override
+	public void start(boolean tp) {
+		super.start(tp);
+		final IArena a = this;
+		Bukkit.getScheduler().runTaskLater(m, new Runnable() {
+			public void run() {
+				for (String p_ : a.getAllPlayers()) {
+					if (Validator.isPlayerOnline(p_)) {
+						Player p = Bukkit.getPlayer(p_);
+						p.setWalkSpeed(0.2F);
+						p.setFoodLevel(20);
+						p.removePotionEffect(PotionEffectType.JUMP);
+					}
+				}
+			}
+		}, 20L);
 	}
 
 }
