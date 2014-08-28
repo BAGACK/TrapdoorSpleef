@@ -50,14 +50,14 @@ public class IArena extends Arena {
 
 	@Override
 	public void stop() {
-		super.stop();
 		final IArena a = this;
 		Bukkit.getScheduler().runTaskLater(m, new Runnable() {
 			public void run() {
 				c = Main.global_arenas_size;
 				a.generateArena(a.getSpawns().get(0).clone().add(0D, -1D, 0D));
 			}
-		}, 10L);
+		}, 1L);
+		super.stop();
 	}
 
 	public MassBlockUpdate checkmbu(Location start) {
