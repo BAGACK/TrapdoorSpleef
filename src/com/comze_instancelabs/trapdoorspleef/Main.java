@@ -125,6 +125,10 @@ public class Main extends JavaPlugin implements Listener {
 	public void onInteract(PlayerInteractEvent event) {
 		final Player p = event.getPlayer();
 		if (pli.global_players.containsKey(p.getName())) {
+			if (pli.global_lost.containsKey(p.getName())) {
+				event.setCancelled(true);
+				return;
+			}
 			IArena a = (IArena) pli.global_players.get(p.getName());
 			if (a.getArenaState() != ArenaState.INGAME) {
 				event.setCancelled(true);
