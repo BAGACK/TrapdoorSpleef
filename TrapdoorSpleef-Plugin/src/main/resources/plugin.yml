@@ -1,6 +1,6 @@
 name: MGTrapdoorSpleef
 main: com.comze_instancelabs.trapdoorspleef.Main
-version: 1.2.0
+version: ${version}
 author: InstanceLabs
 softdepend: [Vault, MinigamesLib]
 depend: [MinigamesLib]
