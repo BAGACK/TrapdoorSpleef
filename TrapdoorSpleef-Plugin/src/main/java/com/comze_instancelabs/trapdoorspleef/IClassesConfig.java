@@ -1,5 +1,6 @@
 package com.comze_instancelabs.trapdoorspleef;
 
+import com.comze_instancelabs.minigamesapi.MinigamesAPI;
 import com.comze_instancelabs.minigamesapi.config.ClassesConfig;
 
 public class IClassesConfig extends ClassesConfig {
@@ -14,7 +15,7 @@ public class IClassesConfig extends ClassesConfig {
     	this.getConfig().addDefault("config.kits.default.requires_money", false);
     	this.getConfig().addDefault("config.kits.default.requires_permission", false);
     	this.getConfig().addDefault("config.kits.default.money_amount", 100);
-    	this.getConfig().addDefault("config.kits.default.permission_node", "minigames.kits.default");
+    	this.getConfig().addDefault("config.kits.default.permission_node", MinigamesAPI.getAPI().getPermissionKitPrefix() + ".default");
 
     	this.getConfig().addDefault("config.kits.pro.name", "pro");
     	this.getConfig().addDefault("config.kits.pro.items", "280#KNOCKBACK:3*1");
@@ -22,7 +23,7 @@ public class IClassesConfig extends ClassesConfig {
     	this.getConfig().addDefault("config.kits.pro.requires_money", false);
     	this.getConfig().addDefault("config.kits.pro.requires_permission", false);
     	this.getConfig().addDefault("config.kits.pro.money_amount", 100);
-    	this.getConfig().addDefault("config.kits.pro.permission_node", "minigames.kits.pro");
+    	this.getConfig().addDefault("config.kits.pro.permission_node", MinigamesAPI.getAPI().getPermissionKitPrefix() + ".pro");
     	
     	this.getConfig().options().copyDefaults(true);
     	this.saveConfig();

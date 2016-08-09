@@ -85,7 +85,7 @@ public class Main extends JavaPlugin implements Listener {
 
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		CommandHandler ch = new ICommandHandler();
-		return ch.handleArgs(this, "mgtrapdoor", "/" + cmd.getName(), sender, args);
+		return ch.handleArgs(this, MinigamesAPI.getAPI().getPermissionGamePrefix("trapdoor"), "/" + cmd.getName(), sender, args);
 	}
 
 	@EventHandler
