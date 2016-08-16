@@ -2,6 +2,7 @@ package com.comze_instancelabs.trapdoorspleef;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Level;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -149,10 +150,8 @@ public class Main extends JavaPlugin implements Listener {
 									byte data = (byte) (td.getData() ^ 4);
 									try {
 										mbu.setWoodenTrapDoor(origin.getBlockX() + i, origin.getBlockY(), origin.getBlockZ() + j, data);
-										// b.setData(data);
-										// b.getWorld().playEffect(b.getLocation(), Effect.DOOR_TOGGLE, 0);
 									} catch (Exception e) {
-										// System.out.println("fail");
+										getLogger().log(Level.WARNING, "failed setting trap door", e);
 									}
 								}
 							}

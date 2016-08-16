@@ -14,7 +14,7 @@ public class NMSEffectManager {
 		{
 		case Unknown:
 		default:
-			System.out.println("Your Bukkit build appears to be unsupported! Please post a comment with the following string on the project page: " + Bukkit.getVersion());
+			MinigamesAPI.getAPI().getLogger().severe("Your Bukkit build appears to be unsupported! Please post a comment with the following string on the project page: " + Bukkit.getVersion());
 			break;
 		case V1_10:
 		case V1_10_R1:
@@ -55,7 +55,7 @@ public class NMSEffectManager {
 		{
 		case Unknown:
 		default:
-			System.out.println("Your Bukkit build appears to be unsupported! Please post a comment with the following string on the project page: " + Bukkit.getVersion());
+			MinigamesAPI.getAPI().getLogger().severe("Your Bukkit build appears to be unsupported! Please post a comment with the following string on the project page: " + Bukkit.getVersion());
 			return null;
 		case V1_10:
 		case V1_10_R1:
@@ -91,7 +91,7 @@ public class NMSEffectManager {
 		{
 		case Unknown:
 		default:
-			System.out.println("Your Bukkit build appears to be unsupported! Please post a comment with the following string on the project page: " + Bukkit.getVersion());
+			MinigamesAPI.getAPI().getLogger().severe("Your Bukkit build appears to be unsupported! Please post a comment with the following string on the project page: " + Bukkit.getVersion());
 			break;
 		case V1_10:
 		case V1_10_R1:
