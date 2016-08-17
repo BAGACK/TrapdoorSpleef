@@ -40,6 +40,9 @@ public class NMSEffectManager {
 		case V1_8_R2:
 			NMSFunctions185.HUGE_EXPLOSION.animateAtLocation(l, i, j);
 			break;
+		case V1_8_R3:
+			NMSFunctions188.HUGE_EXPLOSION.animateAtLocation(l, i, j);
+			break;
 		case V1_9:
 		case V1_9_R1:
 			NMSFunctions19.HUGE_EXPLOSION.animateAtLocation(l, i, j);
@@ -74,6 +77,8 @@ public class NMSEffectManager {
 			return NMSFunctions18.addGlow(item);
 		case V1_8_R2:
 			return NMSFunctions185.addGlow(item);
+		case V1_8_R3:
+			return NMSFunctions188.addGlow(item);
 		case V1_9:
 		case V1_9_R1:
 			return NMSFunctions19.addGlow(item);
@@ -116,6 +121,9 @@ public class NMSEffectManager {
 			break;
 		case V1_8_R2:
 			NMSFunctions185.HUGE_EXPLOSION.animateAtLocation(t, 1, 1);
+			break;
+		case V1_8_R3:
+			NMSFunctions188.HUGE_EXPLOSION.animateAtLocation(t, 1, 1);
 			break;
 		case V1_9:
 		case V1_9_R1:

@@ -27,6 +27,8 @@ public class VersionManager {
 			return new NMSHandler18();
 		case V1_8_R2:
 			return new NMSHandler185();
+		case V1_8_R3:
+			return new NMSHandler188();
 		case V1_9:
 		case V1_9_R1:
 			return new NMSHandler19();
