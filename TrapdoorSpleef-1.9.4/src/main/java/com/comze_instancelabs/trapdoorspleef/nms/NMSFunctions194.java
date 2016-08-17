@@ -1,6 +1,7 @@
 package com.comze_instancelabs.trapdoorspleef.nms;
 
 import java.lang.reflect.Field;
+import java.util.logging.Level;
 
 import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_9_R2.entity.CraftPlayer;
@@ -8,6 +9,8 @@ import org.bukkit.craftbukkit.v1_9_R2.inventory.CraftItemStack;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+
+import com.comze_instancelabs.minigamesapi.MinigamesAPI;
 
 import net.minecraft.server.v1_9_R2.NBTTagCompound;
 import net.minecraft.server.v1_9_R2.NBTTagList;
@@ -95,7 +98,7 @@ public enum NMSFunctions194 {
 		try {
 			craftPlayer.getHandle().playerConnection.sendPacket(getParticle(player.getLocation(), xStack, yStack, zStack, speed, count));
 		} catch (Exception e) {
-			e.printStackTrace();
+		    MinigamesAPI.getAPI().getLogger().log(Level.WARNING, "exception", e);
 		}
 	}
 
@@ -122,7 +125,7 @@ public enum NMSFunctions194 {
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			MinigamesAPI.getAPI().getLogger().log(Level.WARNING, "exception", e);
 		}
 	}
 
