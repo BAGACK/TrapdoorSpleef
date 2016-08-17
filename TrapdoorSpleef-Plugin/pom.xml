@@ -56,6 +56,11 @@
   		</dependency>
   		<dependency>
 			<groupId>com.github.MCE-Plugins</groupId>
+  			<artifactId>MGTrapdoorSpleef-1.8.8</artifactId>
+  			<version>1.14.11-SNAPSHOT</version>
+  		</dependency>
+  		<dependency>
+			<groupId>com.github.MCE-Plugins</groupId>
   			<artifactId>MGTrapdoorSpleef-1.9</artifactId>
   			<version>1.14.11-SNAPSHOT</version>
   		</dependency>
