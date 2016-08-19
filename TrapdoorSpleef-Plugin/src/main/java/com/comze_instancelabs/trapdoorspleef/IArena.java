@@ -70,7 +70,11 @@ public class IArena extends Arena {
 
 	@Override
 	public void start(boolean tp) {
+		c = Main.global_arenas_size;
+		this.generateArena(this.getSpawns().get(0).clone().add(0D, -1D, 0D));
+		
 		super.start(tp);
+		
 		final IArena a = this;
 		Bukkit.getScheduler().runTaskLater(m, new Runnable() {
 			public void run() {
