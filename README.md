@@ -1,4 +1,4 @@
-TrapdoorSpleef [![Build Status](http://www.minigameslib.de/build.php?app=TrapdoorSpleef&major=1)](http://www.minigameslib.de/buildref.php?app=TrapdoorSpleef&major=1)
+TrapdoorSpleef [![Build Status](http://www.minigameslib.de/build.png?app=TrapdoorSpleef&major=1)](http://www.minigameslib.de/buildref.php?app=TrapdoorSpleef&major=1)
 ==============
 
 Spleef on a big platform of trapdoors and some knockback 2 sticks :D
