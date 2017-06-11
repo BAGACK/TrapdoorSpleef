@@ -10,6 +10,9 @@ public class VersionManager {
 		case Unknown:
 		default:
 			break;
+		case V1_12_R1:
+		case V1_12:
+			return new NMSHandler112();
 		case V1_11_R1:
 		case V1_11:
 			return new NMSHandler111();

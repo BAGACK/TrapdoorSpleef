@@ -16,6 +16,10 @@ public class NMSEffectManager {
 		default:
 			MinigamesAPI.getAPI().getLogger().severe("Your Bukkit build appears to be unsupported! Please post a comment with the following string on the project page: " + Bukkit.getVersion());
 			break;
+        case V1_12:
+        case V1_12_R1:
+            NMSFunctions112.HUGE_EXPLOSION.animateAtLocation(l, i, j);
+            break;
         case V1_11:
         case V1_11_R1:
             NMSFunctions111.HUGE_EXPLOSION.animateAtLocation(l, i, j);
@@ -64,6 +68,9 @@ public class NMSEffectManager {
 		default:
 			MinigamesAPI.getAPI().getLogger().severe("Your Bukkit build appears to be unsupported! Please post a comment with the following string on the project page: " + Bukkit.getVersion());
 			return null;
+        case V1_12:
+        case V1_12_R1:
+            return NMSFunctions111.addGlow(item);
         case V1_11:
         case V1_11_R1:
             return NMSFunctions111.addGlow(item);
@@ -105,6 +112,10 @@ public class NMSEffectManager {
 		default:
 			MinigamesAPI.getAPI().getLogger().severe("Your Bukkit build appears to be unsupported! Please post a comment with the following string on the project page: " + Bukkit.getVersion());
 			break;
+        case V1_12:
+        case V1_12_R1:
+            NMSFunctions112.HUGE_EXPLOSION.animateAtLocation(t, 1, 1);
+            break;
         case V1_11:
         case V1_11_R1:
             NMSFunctions111.HUGE_EXPLOSION.animateAtLocation(t, 1, 1);
